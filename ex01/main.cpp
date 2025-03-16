@@ -1,5 +1,16 @@
 #include "ClapTrap.hpp"
 
+// int main(void)
+// {
+//     ClapTrap    A("bing");
+//     ClapTrap    B("bong");
+
+//     A.attack(B._name);
+//     // B.takeDamage(A.)
+
+//     return (0);
+// }
+
 int main()
 {
     ClapTrap    A("Bing");
