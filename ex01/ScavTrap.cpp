@@ -1,0 +1,64 @@
+#include "ScavTrap.hpp"
+
+ScavTrap::ScavTrap()
+: ClapTrap()
+{
+    std::cout << "ScavTrap default constructor\n";
+    _hitPoints = 100;
+    _energyPoints = 50;
+    _attackDamage = 20;
+}
+
+ScavTrap::ScavTrap(std::string name)
+: ClapTrap(name)
+{
+    std::cout << "ScavTrap name constructor\n";
+    _hitPoints = 100;
+    _energyPoints = 50;
+    _attackDamage = 20;
+}
+
+ScavTrap::ScavTrap(const ScavTrap& other)
+: ClapTrap(other)
+{
+    std::cout << "ScavTrap copy constructor\n";
+    *this = other;
+}
+
+ScavTrap::~ScavTrap()
+{
+    std::cout << "ScavTrap destructor called\n";
+}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap& other)
+{
+    if (this != &other)
+    {
+        ClapTrap::operator=(other);
+        _hitPoints = other._hitPoints;
+        _energyPoints = other._energyPoints;
+        _attackDamage = other._attackDamage;
+    }
+    return *this;
+}
+
+void ScavTrap::attack(const std::string& target)
+{
+    if (_energyPoints <= 0)
+    {
+        std::cout << "ScavTrap " << _name << " cannot attack: no energy point left\n";
+        return;
+    }
+    if (_hitPoints <= 0)
+    {
+        std::cout << "ScavTrap " << _name << " cannot attack: no hit point left\n";
+        return;
+    }
+    std::cout << "ScavTrap " << _name << " attacks " << target << " causing " << _attackDamage << " points of damage!\n";
+    _energyPoints -= 1;
+}
+
+void ScavTrap::guardGate()
+{
+    std::cout << "ScavTrap " << _name << " is now in Gatekeeper mode.\n";
+}
