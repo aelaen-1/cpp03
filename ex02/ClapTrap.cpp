@@ -8,7 +8,7 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(const ClapTrap& other)
 {
-    std::cout << "ClapTrap copy constructor\n";
+    std::cout << "ClapTrap copy constructor, from " << other._name << std::endl;
     *this = other;
 }
 

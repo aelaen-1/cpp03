@@ -12,6 +12,17 @@ ClapTrap::ClapTrap(const ClapTrap& other)
     *this = other;
 }
 
+ClapTrap::ClapTrap(std::string name)
+: _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
+{
+    std::cout << "ClapTrap name constructor\n";
+}
+
+ClapTrap::~ClapTrap()
+{
+    std::cout << "ClapTrap default destructor\n";
+}
+
 ClapTrap&   ClapTrap::operator=(const ClapTrap& other)
 {
     if (this != &other)
@@ -23,17 +34,6 @@ ClapTrap&   ClapTrap::operator=(const ClapTrap& other)
         _attackDamage = other._attackDamage;
     }
     return *this;
-}
-
-ClapTrap::ClapTrap(std::string name)
-: _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
-{
-    std::cout << "ClapTrap name constructor\n";
-}
-
-ClapTrap::~ClapTrap()
-{
-    std::cout << "ClapTrap default destructor\n";
 }
 
 void    ClapTrap::attack(const std::string& target)
@@ -81,7 +81,7 @@ void    ClapTrap::beRepaired(unsigned int amount)
         return ;
     }
     std::cout << "ClapTrap " << _name << " has recovered "
-    << amount << " energy points!\n";
+    << amount << " hit points!\n";
     _hitPoints += amount;
     _energyPoints -= 1;
 }
